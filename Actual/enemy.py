@@ -4,7 +4,7 @@ import pygame as pg
 class Enemy(pg.sprite.Sprite):
     def __init__(self, startLocation):
         super(Enemy, self).__init__()
-        self.image = pg.image.load(os.path.join('assets', 'Ship1.png')).convert_alpha()
+        self.image = pg.image.load(os.path.join('assets', 'skeleton.png')).convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.centerx = startLocation[0]
         self.rect.centery = startLocation[1]

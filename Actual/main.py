@@ -26,15 +26,15 @@ def main():
             enemies.add(enemy)
 
     # Start sound
-    pg.mixer.music.load('./assets/cpu-talk.mp3')
-    pg.mixer.music.play(-1)
+    #pg.mixer.music.load('./assets/cpu-talk.mp3')
+    #pg.mixer.music.play(-1)
 
     # Get font setup
-    pg.freetype.init()
-    font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets/", "PermanentMarker-Regular.ttf")
-    font_size = 64
-    font = pg.freetype.Font(font_path, font_size)
-    WHITE = (254, 254, 254)
+    #pg.freetype.init()
+    #font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets/", "PermanentMarker-Regular.ttf")
+    #font_size = 64
+    #font = pg.freetype.Font(font_path, font_size)
+    #WHITE = (254, 254, 254)
 
     # Startup the main game loop
     running = True
@@ -82,7 +82,7 @@ def main():
         player.draw(screen)
         enemies.draw(screen)
         projectiles.draw(screen)
-        font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
+        #font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
 
         # When drawing is done, flip the buffer.
         pg.display.flip()
