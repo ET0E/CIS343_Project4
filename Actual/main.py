@@ -20,8 +20,8 @@ def main():
     enemies = pg.sprite.Group()
     projectiles = pg.sprite.Group()
 
-    for i in range(500, 1000, 75):
-        for j in range(100, 600, 50):
+    for i in range(400, 1000, 100):
+        for j in range(100, 600, 90):
             enemy = Enemy((i, j))
             enemies.add(enemy)
 

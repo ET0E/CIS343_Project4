@@ -5,8 +5,10 @@ class Player(pg.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'Cowboy.png')).convert_alpha()
+        IMAGE_SIZE = (125,125)
+        self.image = pg.transform.scale(self.image, IMAGE_SIZE)
         self.rect = self.image.get_rect()
-        self.rect.centerx = 20
+        self.rect.centerx = 100
         self.rect.centery = 350
 
     def draw(self, screen):

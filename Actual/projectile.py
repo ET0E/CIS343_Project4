@@ -5,6 +5,8 @@ class Projectile(pg.sprite.Sprite):
     def __init__(self, shipLocation, enemies):
         super(Projectile, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'cannonball.png')).convert_alpha()
+        IMAGE_SIZE = (45,45)
+        self.image = pg.transform.scale(self.image, IMAGE_SIZE)
         self.rect = self.image.get_rect()
         self.rect.centerx = shipLocation.x + 100
         self.rect.centery = shipLocation.y + 37
@@ -18,7 +20,7 @@ class Projectile(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def update(self, delta):
-        self.rect.x += 5000 * delta
+        self.rect.x += 750 * delta
         if self.rect.x > 1024:
             self.kill()
         collision = pg.sprite.spritecollideany(self, self.enemies)

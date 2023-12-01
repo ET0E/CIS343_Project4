@@ -5,6 +5,8 @@ class Enemy(pg.sprite.Sprite):
     def __init__(self, startLocation):
         super(Enemy, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'skeleton.png')).convert_alpha()
+        IMAGE_SIZE = (80,100)
+        self.image = pg.transform.scale(self.image, IMAGE_SIZE)
         self.rect = self.image.get_rect()
         self.rect.centerx = startLocation[0]
         self.rect.centery = startLocation[1]
