@@ -22,3 +22,11 @@ class Player(pg.sprite.Sprite):
     def down(self, delta):
         if self.rect.y < 1000:
             self.rect.y += 240 * delta
+
+    def right(self, delta):
+        if self.rect.x > 0:
+            self.rect.x -= 240 * delta
+
+    def left(self, delta):
+        if self.rect.x < 1024:
+            self.rect.x += 240 * delta

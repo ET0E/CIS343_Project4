@@ -55,6 +55,10 @@ def main():
             player.down(delta)
         if keys[K_w]:
             player.up(delta)
+        if keys[K_a]:
+            player.left(delta)
+        if keys[K_d]:
+            player.right(delta)
         if keys[K_SPACE]:
             if shotDelta >= .25:
                 projectile = Projectile(player.rect, enemies)
