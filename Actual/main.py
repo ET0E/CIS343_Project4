@@ -13,7 +13,7 @@ def main():
     pg.init()
 
     # Get a screen object
-    screen = pg.display.set_mode([1024, 768])
+    screen = pg.display.set_mode([1920, 1080])
 
     player = Player()
 
