@@ -1,15 +1,17 @@
 import os
 import pygame as pg
 
+
 playerLocation = 0
+
 
 class Player(pg.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'Cowboy.png')).convert_alpha()
-        IMAGE_SIZE = (125,125)
+        IMAGE_SIZE = (125, 125)
         self.image = pg.transform.scale(self.image, IMAGE_SIZE)
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(center=(self.image.get_rect().x, self.image.get_rect().y))
         self.rect.centerx = 700
         self.rect.centery = 350
 
@@ -21,7 +23,7 @@ class Player(pg.sprite.Sprite):
 
     def getXLocation(self):
         return self.rect.x + self.width / 2
-    
+
     def getYLocation(self):
         return self.rect.y + self.width / 2
 
@@ -41,7 +43,7 @@ class Player(pg.sprite.Sprite):
         if self.rect.x < 1920:
             self.rect.x += 240 * delta
 
-    def rotate_right(self, image):
-        image = self.image
-        rot_image = pg.transform.rotate(image, 90)
-        return rot_image
+    #def rotate(self, image, angle):
+         #image = pg.transform.rotate(image, angle)
+
+

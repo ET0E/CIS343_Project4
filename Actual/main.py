@@ -8,6 +8,7 @@ from projectile import Projectile
 from enemyspawner import EnemySpawner
 from pygame.locals import *
 import random
+import math
 
 
 def main():
@@ -28,22 +29,21 @@ def main():
     enemyspawner.add(enemyspawnerN)
     enemyspawner.add(enemyspawnerS)
 
-
     for i in range(400, 1000, 100):
         for j in range(100, 600, 90):
             enemy = Enemy((i, j))
             enemies.add(enemy)
 
     # Start sound
-    #pg.mixer.music.load('./assets/cpu-talk.mp3')
-    #pg.mixer.music.play(-1)
+    # pg.mixer.music.load('./assets/cpu-talk.mp3')
+    # pg.mixer.music.play(-1)
 
     # Get font setup
-    #pg.freetype.init()
-    #font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets/", "PermanentMarker-Regular.ttf")
-    #font_size = 64
-    #font = pg.freetype.Font(font_path, font_size)
-    #WHITE = (254, 254, 254)
+    # pg.freetype.init()
+    # font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets/", "PermanentMarker-Regular.ttf")
+    # font_size = 64
+    # font = pg.freetype.Font(font_path, font_size)
+    # WHITE = (254, 254, 254)
 
     # Startup the main game loop
     running = True
@@ -59,7 +59,8 @@ def main():
             if event.type == pg.QUIT:
                 running = False
             if event.type == pg.USEREVENT + 1:
-                score += 100
+                score += 10
+
         keys = pg.key.get_pressed()
         if keys[K_s]:
             player.down(delta)
@@ -74,15 +75,12 @@ def main():
                 projectile = Projectile(player.rect, enemies)
                 projectiles.add(projectile)
                 shotDelta = 0
-        if keys[K_e]:
-            rot_image = player.rotate_right(player.image)
-            screen.blit(rot_image, player.image.get_rect())
+
         if len(enemies) == 0:
             print("You've cleared the galaxy of evil!")
             return
         if keys[K_ESCAPE]:
             running = False
-
 
         # Ok, events are handled, let's draw!
         screen.fill((0, 0, 0))
@@ -94,11 +92,20 @@ def main():
         for projectile in projectiles:
             projectile.update(delta)
 
-        player.draw(screen)
+        pos = pg.mouse.get_pos()
+        x_dist = pos[0] - player.image.get_rect().x
+        y_dist = -(pos[1] - player.image.get_rect().y)
+        angle = math.degrees(math.atan2(y_dist, x_dist))
+
+        image = pg.transform.rotate(player.image, angle - 90)
+        image_rect = image.get_rect()
+
+        screen.blit(image, image_rect)
+
         enemies.draw(screen)
         enemyspawner.draw(screen)
         projectiles.draw(screen)
-        #font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
+        # font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
 
         # When drawing is done, flip the buffer.
         pg.display.flip()
