@@ -6,6 +6,7 @@ from enemy import Enemy
 from player import Player
 from projectile import Projectile
 from pygame.locals import *
+import random
 
 
 def main():
@@ -68,6 +69,9 @@ def main():
         if len(enemies) == 0:
             print("You've cleared the galaxy of evil!")
             return
+        if keys[K_ESCAPE]:
+            running = False
+
 
         # Ok, events are handled, let's draw!
         screen.fill((0, 0, 0))

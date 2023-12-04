@@ -20,8 +20,8 @@ class Projectile(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def update(self, delta):
-        self.rect.x += 750 * delta
-        if self.rect.x > 1024:
+        self.rect.centerx += 750 * delta
+        if self.rect.centerx > 1080:
             self.kill()
         collision = pg.sprite.spritecollideany(self, self.enemies)
         if collision:

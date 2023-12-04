@@ -1,5 +1,6 @@
 import os
 import pygame as pg
+import random
 
 class Enemy(pg.sprite.Sprite):
     def __init__(self, startLocation):
