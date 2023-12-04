@@ -40,3 +40,8 @@ class Player(pg.sprite.Sprite):
     def right(self, delta):
         if self.rect.x < 1920:
             self.rect.x += 240 * delta
+
+    def rotate_right(self, image):
+        image = self.image
+        rot_image = pg.transform.rotate(image, 90)
+        return rot_image

@@ -74,6 +74,9 @@ def main():
                 projectile = Projectile(player.rect, enemies)
                 projectiles.add(projectile)
                 shotDelta = 0
+        if keys[K_e]:
+            rot_image = player.rotate_right(player.image)
+            screen.blit(rot_image, player.image.get_rect())
         if len(enemies) == 0:
             print("You've cleared the galaxy of evil!")
             return
