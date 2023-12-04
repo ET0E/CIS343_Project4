@@ -5,6 +5,7 @@ import os
 from enemy import Enemy
 from player import Player
 from projectile import Projectile
+from enemyspawner import EnemySpawner
 from pygame.locals import *
 import random
 
@@ -20,6 +21,13 @@ def main():
 
     enemies = pg.sprite.Group()
     projectiles = pg.sprite.Group()
+    enemyspawner = pg.sprite.Group()
+
+    enemyspawnerN = EnemySpawner(700, 50)
+    enemyspawnerS = EnemySpawner(700, 750)
+    enemyspawner.add(enemyspawnerN)
+    enemyspawner.add(enemyspawnerS)
+
 
     for i in range(400, 1000, 100):
         for j in range(100, 600, 90):
@@ -85,6 +93,7 @@ def main():
 
         player.draw(screen)
         enemies.draw(screen)
+        enemyspawner.draw(screen)
         projectiles.draw(screen)
         #font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
 

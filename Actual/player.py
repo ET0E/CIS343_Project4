@@ -1,6 +1,8 @@
 import os
 import pygame as pg
 
+playerLocation = 0
+
 class Player(pg.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
@@ -16,6 +18,12 @@ class Player(pg.sprite.Sprite):
 
     def update(self, delta):
         pass
+
+    def getXLocation(self):
+        return self.rect.x + self.width / 2
+    
+    def getYLocation(self):
+        return self.rect.y + self.width / 2
 
     def up(self, delta):
         if self.rect.y > 0:

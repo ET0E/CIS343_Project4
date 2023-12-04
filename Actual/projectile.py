@@ -5,7 +5,7 @@ class Projectile(pg.sprite.Sprite):
     def __init__(self, shipLocation, enemies):
         super(Projectile, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'cannonball.png')).convert_alpha()
-        IMAGE_SIZE = (45,45)
+        IMAGE_SIZE = (40,40)
         self.image = pg.transform.scale(self.image, IMAGE_SIZE)
         self.rect = self.image.get_rect()
         self.rect.centerx = shipLocation.x + 100
