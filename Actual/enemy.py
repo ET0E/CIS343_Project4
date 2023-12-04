@@ -20,7 +20,7 @@ class Enemy(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def update(self, delta):
-        self.rect.y += 100 * delta * self.direction
+        self.rect.y += 100 * delta * self.direction 
         #self.rect.y += 100 * delta * Player.getYLocation(Player)
         #self.rect.x += 100 * delta * Player.getXLocation(Player)
         if self.rect.y > self.startLocation[1] + 100 or self.rect.y < self.startLocation[1] - 100:
