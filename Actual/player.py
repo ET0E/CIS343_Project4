@@ -6,6 +6,7 @@ playerLocation = 0
 
 
 class Player(pg.sprite.Sprite):
+
     def __init__(self):
         super(Player, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'Cowboy.png')).convert_alpha()
@@ -16,6 +17,19 @@ class Player(pg.sprite.Sprite):
         self.rect.centery = 350
         self.angle = 0
         self.rotating = False
+        self.direction = 1
+
+    def get_direction(self):
+        return self.direction
+
+    def set_direction(self, direction):
+        self.direction = direction
+
+    def get_image(self):
+        return self.image
+
+    def set_image(self, image):
+        self.image = image
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -50,7 +64,5 @@ class Player(pg.sprite.Sprite):
         image = pg.transform.rotate(self.image, self.angle)
         image.rect = image.get_rect(center=self.rect.center)
 
-    #def rotate(self, image, angle):
-         #image = pg.transform.rotate(image, angle)
-
-
+    # def rotate(self, image, angle):
+    # image = pg.transform.rotate(image, angle)
