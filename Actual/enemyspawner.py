@@ -16,6 +16,7 @@ class EnemySpawner(pg.sprite.Sprite):
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
+    # add delta (1000 == 1 second)
     def update(self, delta):
         pass
 

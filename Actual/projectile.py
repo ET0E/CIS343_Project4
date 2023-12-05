@@ -21,7 +21,7 @@ class Projectile(pg.sprite.Sprite):
 
     def update(self, delta):
         self.rect.centerx += 750 * delta
-        if self.rect.centerx > 1080:
+        if self.rect.centerx > 1350:
             self.kill()
         collision = pg.sprite.spritecollideany(self, self.enemies)
         if collision:

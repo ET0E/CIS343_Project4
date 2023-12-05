@@ -24,10 +24,10 @@ class Player(pg.sprite.Sprite):
         pass
 
     def getXLocation(self):
-        return self.rect.x + self.width / 2
+        return self.rect.centery
 
     def getYLocation(self):
-        return self.rect.y + self.width / 2
+        return self.rect.centerx
 
     def up(self, delta):
         if self.rect.y > 0:

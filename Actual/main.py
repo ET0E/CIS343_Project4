@@ -16,7 +16,7 @@ def main():
     pg.init()
 
     # Get a screen object
-    screen = pg.display.set_mode([1920, 1080])
+    screen = pg.display.set_mode([1400, 800])
 
     player = Player()
 
@@ -29,6 +29,7 @@ def main():
     enemyspawner.add(enemyspawnerN)
     enemyspawner.add(enemyspawnerS)
 
+    # delete this 
     for i in range(400, 1000, 100):
         for j in range(100, 600, 90):
             enemy = Enemy((i, j))
@@ -100,7 +101,7 @@ def main():
         player.update(delta)
 
         for enemy in enemies:
-            enemy.update(delta)
+            enemy.update(delta, player)
         for projectile in projectiles:
             projectile.update(delta)
 
