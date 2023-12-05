@@ -75,19 +75,34 @@ def main():
                     #player.rotating = False
 
         keys = pg.key.get_pressed()
+        player.set_direction(player.get_direction())
+        player.set_image(player.get_image())
         if keys[K_s]:
             player.down(delta)
+            player.set_direction(-.5)
+            image = pg.transform.rotate(player.get_image(), -90)
+            player.set_image(image)
         if keys[K_w]:
             player.up(delta)
+            player.set_direction(.5)
+            image = pg.transform.rotate(player.get_image(), -90)
+            player.set_image(image)
         if keys[K_a]:
             player.left(delta)
+            player.set_direction(0)
+            image = pg.transform.flip(player.get_image(), True, False)
+            player.set_image(image)
         if keys[K_d]:
             player.right(delta)
+            player.set_direction(1)
+            image = pg.transform.flip(player.get_image(), False, True)
+            player.set_image(image)
         if keys[K_SPACE]:
             if shotDelta >= .25:
-                projectile = Projectile(player.rect, enemies)
+                projectile = Projectile(player.rect, enemies, player.get_direction())
                 projectiles.add(projectile)
                 shotDelta = 0
+
         if len(enemies) == 0:
             print("You've cleared the galaxy of evil!")
             return
