@@ -56,24 +56,25 @@ def main():
     score = 0
     angle = 0
     while running:
+        player.rotating = True
         # First thing we need to clear the events.
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
             if event.type == pg.USEREVENT + 1:
                 score += 10
-           # if event.type == pg.KEYDOWN:
-                #if event.key == pg.K_e:
-                    #player.rotate(angle-1)
-                    #player.rotating = True
-                #if event.key == pg.K_q:
-                    #player.rotate(angle+1)
-                    #player.rotating = True
-            #elif event.type == pg.KEYUP:
-                #if event.key == pg.K_e:
-                    #player.rotating = False
-                #if event.key == pg.K_q:
-                    #player.rotating = False
+        # if event.type == pg.KEYDOWN:
+        # if event.key == pg.K_e:
+        # player.rotate(angle-1)
+        # player.rotating = True
+        # if event.key == pg.K_q:
+        # player.rotate(angle+1)
+        # player.rotating = True
+        # elif event.type == pg.KEYUP:
+        # if event.key == pg.K_e:
+        # player.rotating = False
+        # if event.key == pg.K_q:
+        # player.rotating = False
 
         keys = pg.key.get_pressed()
         player.set_direction(player.get_direction())
@@ -81,28 +82,38 @@ def main():
         if keys[K_s]:
             player.down(delta)
             player.set_direction(-.5)
-            image = pg.transform.rotate(player.get_image(), -90)
-            player.set_image(image)
+            # image = pg.transform.rotate(player.get_image(), -90)
+            # player.set_image(image)
         if keys[K_w]:
             player.up(delta)
             player.set_direction(.5)
-            image = pg.transform.rotate(player.get_image(), -90)
-            player.set_image(image)
+            # image = pg.transform.rotate(player.get_image(), -90)
+            # player.set_image(image)
         if keys[K_a]:
             player.left(delta)
             player.set_direction(0)
-            image = pg.transform.flip(player.get_image(), True, False)
-            player.set_image(image)
+            # image = pg.transform.flip(player.get_image(), True, False)
+            # player.set_image(image)
         if keys[K_d]:
             player.right(delta)
             player.set_direction(1)
-            image = pg.transform.flip(player.get_image(), False, True)
-            player.set_image(image)
+            # image = pg.transform.flip(player.get_image(), False, True)
+            # player.set_image(image)
         if keys[K_SPACE]:
             if shotDelta >= .25:
                 projectile = Projectile(player.rect, enemies, player.get_direction())
                 projectiles.add(projectile)
                 shotDelta = 0
+        if keys[K_e]:
+            if player.rotating:
+                image = pg.transform.rotate(player.get_image(), -90)
+                player.set_image(image)
+                player.rotating = False
+        if keys[K_q]:
+            if player.rotating:
+                image = pg.transform.rotate(player.get_image(), 90)
+                player.set_image(image)
+                player.rotating = False
 
         if len(enemies) == 0:
             print("You've cleared the galaxy of evil!")
@@ -120,20 +131,20 @@ def main():
         for projectile in projectiles:
             projectile.update(delta)
 
-        #pos = pg.mouse.get_pos()
-        #x_dist = pos[0] - player.image.get_rect().x
-        #y_dist = -(pos[1] - player.image.get_rect().y)
-        #angle = math.degrees(math.atan2(y_dist, x_dist))
+        # pos = pg.mouse.get_pos()
+        # x_dist = pos[0] - player.image.get_rect().x
+        # y_dist = -(pos[1] - player.image.get_rect().y)
+        # angle = math.degrees(math.atan2(y_dist, x_dist))
 
-        #image = pg.transform.rotate(player.image, angle - 90)
-        #image_rect = image.get_rect()
+        # image = pg.transform.rotate(player.image, angle - 90)
+        # image_rect = image.get_rect()
 
-        #screen.blit(image, image_rect)
+        # screen.blit(image, image_rect)
 
         player.draw(screen)
         enemies.draw(screen)
         enemyspawner.draw(screen)
-        #would need to update projectlies.draw to shoot from the character with the changes in the comments
+        # would need to update projectlies.draw to shoot from the character with the changes in the comments
         projectiles.draw(screen)
         # font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
 

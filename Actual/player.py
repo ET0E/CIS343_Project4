@@ -16,7 +16,7 @@ class Player(pg.sprite.Sprite):
         self.rect.centerx = 700
         self.rect.centery = 350
         self.angle = 0
-        self.rotating = False
+        self.rotating = True
         self.direction = 1
 
     def get_direction(self):

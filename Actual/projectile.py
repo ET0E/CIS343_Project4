@@ -22,10 +22,6 @@ class Projectile(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def update(self, delta):
-<<<<<<< HEAD
-        self.rect.centerx += 750 * delta
-        if self.rect.centerx > 1350:
-=======
         if self.direction == 1:
             self.rect.centerx += 750 * delta
         if self.direction == .5:
@@ -34,8 +30,7 @@ class Projectile(pg.sprite.Sprite):
             self.rect.centery += 750 * delta
         if self.direction == 0:
             self.rect.centerx -= 750 * delta
-        if self.rect.centerx > 1080:
->>>>>>> Multi-Directional
+        if self.rect.centerx > 1350:
             self.kill()
         collision = pg.sprite.spritecollideany(self, self.enemies)
         if collision:
