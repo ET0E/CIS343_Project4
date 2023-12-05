@@ -53,6 +53,7 @@ def main():
     clock = pg.time.Clock()
     clock.tick(fps)
     score = 0
+    angle = 0
     while running:
         # First thing we need to clear the events.
         for event in pg.event.get():
@@ -60,6 +61,18 @@ def main():
                 running = False
             if event.type == pg.USEREVENT + 1:
                 score += 10
+           # if event.type == pg.KEYDOWN:
+                #if event.key == pg.K_e:
+                    #player.rotate(angle-1)
+                    #player.rotating = True
+                #if event.key == pg.K_q:
+                    #player.rotate(angle+1)
+                    #player.rotating = True
+            #elif event.type == pg.KEYUP:
+                #if event.key == pg.K_e:
+                    #player.rotating = False
+                #if event.key == pg.K_q:
+                    #player.rotating = False
 
         keys = pg.key.get_pressed()
         if keys[K_s]:
@@ -75,7 +88,6 @@ def main():
                 projectile = Projectile(player.rect, enemies)
                 projectiles.add(projectile)
                 shotDelta = 0
-
         if len(enemies) == 0:
             print("You've cleared the galaxy of evil!")
             return
@@ -92,18 +104,20 @@ def main():
         for projectile in projectiles:
             projectile.update(delta)
 
-        pos = pg.mouse.get_pos()
-        x_dist = pos[0] - player.image.get_rect().x
-        y_dist = -(pos[1] - player.image.get_rect().y)
-        angle = math.degrees(math.atan2(y_dist, x_dist))
+        #pos = pg.mouse.get_pos()
+        #x_dist = pos[0] - player.image.get_rect().x
+        #y_dist = -(pos[1] - player.image.get_rect().y)
+        #angle = math.degrees(math.atan2(y_dist, x_dist))
 
-        image = pg.transform.rotate(player.image, angle - 90)
-        image_rect = image.get_rect()
+        #image = pg.transform.rotate(player.image, angle - 90)
+        #image_rect = image.get_rect()
 
-        screen.blit(image, image_rect)
+        #screen.blit(image, image_rect)
 
+        player.draw(screen)
         enemies.draw(screen)
         enemyspawner.draw(screen)
+        #would need to update projectlies.draw to shoot from the character with the changes in the comments
         projectiles.draw(screen)
         # font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
 

@@ -1,6 +1,6 @@
 import os
 import pygame as pg
-
+import math
 
 playerLocation = 0
 
@@ -14,6 +14,8 @@ class Player(pg.sprite.Sprite):
         self.rect = self.image.get_rect(center=(self.image.get_rect().x, self.image.get_rect().y))
         self.rect.centerx = 700
         self.rect.centery = 350
+        self.angle = 0
+        self.rotating = False
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -42,6 +44,11 @@ class Player(pg.sprite.Sprite):
     def right(self, delta):
         if self.rect.x < 1920:
             self.rect.x += 240 * delta
+
+    def rotate(self, angle_change):
+        self.angle += angle_change
+        image = pg.transform.rotate(self.image, self.angle)
+        image.rect = image.get_rect(center=self.rect.center)
 
     #def rotate(self, image, angle):
          #image = pg.transform.rotate(image, angle)
