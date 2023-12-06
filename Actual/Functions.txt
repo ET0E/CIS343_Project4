@@ -1,0 +1,8 @@
+            if player.get_direction() == 0 and player.get_rotating() is True:
+                image = pg.transform.rotate(player.image, 270)
+                player.set_image(image)
+                player.set_rotating(False)
+            if player.get_direction() == 1 and player.get_rotating() is True:
+                image = pg.transform.rotate(player.image, -270)
+                player.set_image(image)
+                player.set_rotating(False)

@@ -65,10 +65,3 @@ class Player(pg.sprite.Sprite):
         if self.rect.x < 1920:
             self.rect.x += 240 * delta
 
-    def rotate(self, angle_change):
-        self.angle += angle_change
-        image = pg.transform.rotate(self.image, self.angle)
-        image.rect = image.get_rect(center=self.rect.center)
-
-    # def rotate(self, image, angle):
-    # image = pg.transform.rotate(image, angle)

@@ -88,10 +88,6 @@ def main():
             player.set_direction(-.5)
         if keys[K_w]:
             player.up(delta)
-            #if player.get_direction() == -.5 and player.get_rotating() is True:
-                #image = pg.transform.rotate(player.get_image(), 180)
-                #player.set_image(image)
-                #player.set_rotating(False)
             player.set_direction(.5)
             # image = pg.transform.rotate(player.get_image(), -90)
             # player.set_image(image)
@@ -113,7 +109,7 @@ def main():
             if player.get_direction() == 0 and player.get_rotating() is True:
                 image = pg.transform.flip(player.get_image(), True, False)
                 player.set_image(image)
-                player.set_rotating(True)
+                player.set_rotating(False)
             player.set_direction(1)
 
             # image = pg.transform.flip(player.get_image(), False, True)
