@@ -81,22 +81,41 @@ def main():
         player.set_image(player.get_image())
         if keys[K_s]:
             player.down(delta)
+            #if player.get_direction() == .5 and player.get_rotating() is True:
+                #image = pg.transform.rotate(player.get_image(), -90)
+                #player.set_image(image)
+                #player.set_rotating(False)
             player.set_direction(-.5)
-            # image = pg.transform.rotate(player.get_image(), -90)
-            # player.set_image(image)
         if keys[K_w]:
             player.up(delta)
+            #if player.get_direction() == -.5 and player.get_rotating() is True:
+                #image = pg.transform.rotate(player.get_image(), 180)
+                #player.set_image(image)
+                #player.set_rotating(False)
             player.set_direction(.5)
             # image = pg.transform.rotate(player.get_image(), -90)
             # player.set_image(image)
+
+        """
+        These two methods turn the character to the side the user is moving
+        If the user changes directions too fast it can kind of mess with the directions
+        """
         if keys[K_a]:
             player.left(delta)
+            if player.get_direction() == 1 and player.get_rotating() is True:
+                image = pg.transform.flip(player.get_image(), True, False)
+                player.set_image(image)
+                player.set_rotating(False)
             player.set_direction(0)
-            # image = pg.transform.flip(player.get_image(), True, False)
-            # player.set_image(image)
+
         if keys[K_d]:
             player.right(delta)
+            if player.get_direction() == 0 and player.get_rotating() is True:
+                image = pg.transform.flip(player.get_image(), True, False)
+                player.set_image(image)
+                player.set_rotating(True)
             player.set_direction(1)
+
             # image = pg.transform.flip(player.get_image(), False, True)
             # player.set_image(image)
         if keys[K_SPACE]:

@@ -31,6 +31,12 @@ class Player(pg.sprite.Sprite):
     def set_image(self, image):
         self.image = image
 
+    def get_rotating(self):
+        return self.rotating
+
+    def set_rotating(self, rotating):
+        self.rotating = rotating
+
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
