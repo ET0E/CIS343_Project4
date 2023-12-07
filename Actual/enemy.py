@@ -63,6 +63,3 @@ class Enemy(pg.sprite.Sprite):
 
         #self.rect.y += 1 * delta * player.getYLocation()
         #self.rect.x += 1 * delta * player.getXLocation()
-
-        def add(x, y):
-            return x+y
