@@ -138,8 +138,8 @@ def main():
 
         # Ok, events are handled, let's draw!
         screen.fill((0, 0, 0))
-        enemyspawnerN.update()
-        enemyspawnerS.update()
+        enemyspawnerN.update(enemies)
+        enemyspawnerS.update(enemies)
         player.update(delta)
 
         for enemy in enemies:
