@@ -1,6 +1,8 @@
 import os
 import pygame as pg
 import random
+from enemy import Enemy
+
 
 
 class EnemySpawner(pg.sprite.Sprite):
@@ -17,9 +19,14 @@ class EnemySpawner(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     # add delta (1000 == 1 second)
-    def update(self, delta):
-        pass
+    # randomly choose one of the spawner objects in here
+    # randomly choose a number every update 0-1000 (which is every frame)
+    def update(self):
+        if (random.randint(0,50) == 25):
+            enemy = Enemy((self.rect.centerx, self.rect.centery))
+
 
     
+        
 
         

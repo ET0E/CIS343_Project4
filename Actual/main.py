@@ -22,18 +22,18 @@ def main():
 
     enemies = pg.sprite.Group()
     projectiles = pg.sprite.Group()
-    enemyspawner = pg.sprite.Group()
+    enemyspawners = pg.sprite.Group()
 
     enemyspawnerN = EnemySpawner(700, 50)
     enemyspawnerS = EnemySpawner(700, 750)
-    enemyspawner.add(enemyspawnerN)
-    enemyspawner.add(enemyspawnerS)
+    enemyspawners.add(enemyspawnerN)
+    enemyspawners.add(enemyspawnerS)
 
     # delete this 
-    for i in range(400, 1000, 100):
-        for j in range(100, 600, 90):
-            enemy = Enemy((i, j))
-            enemies.add(enemy)
+    ##for i in range(400, 1000, 100):
+    #   for j in range(100, 600, 90):
+    #        enemy = Enemy((i, j))
+    #        enemies.add(enemy)
 
     # Start sound
     # pg.mixer.music.load('./assets/cpu-talk.mp3')
@@ -130,21 +130,23 @@ def main():
                 player.set_image(image)
                 player.rotating = False
 
-        if len(enemies) == 0:
-            print("You've cleared the galaxy of evil!")
-            return
+        #if len(enemies) == 0:
+        #    print("You've cleared the galaxy of evil!")
+        #    return
         if keys[K_ESCAPE]:
             running = False
 
         # Ok, events are handled, let's draw!
         screen.fill((0, 0, 0))
-
+        enemyspawnerN.update()
+        enemyspawnerS.update()
         player.update(delta)
 
         for enemy in enemies:
             enemy.update(delta, player)
         for projectile in projectiles:
             projectile.update(delta)
+        
 
         # pos = pg.mouse.get_pos()
         # x_dist = pos[0] - player.image.get_rect().x
@@ -158,7 +160,7 @@ def main():
 
         player.draw(screen)
         enemies.draw(screen)
-        enemyspawner.draw(screen)
+        enemyspawners.draw(screen)
         # would need to update projectlies.draw to shoot from the character with the changes in the comments
         projectiles.draw(screen)
         # font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)

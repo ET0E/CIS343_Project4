@@ -2,7 +2,6 @@ import os
 import pygame as pg
 import random
 import math
-#from player import Player
 
 BOUNDARYNORTH = 50
 BOUNDARYEAST = 1350
@@ -31,31 +30,30 @@ class Enemy(pg.sprite.Sprite):
         return self.rect.centerx
 
     def update(self, delta, player):
-        #self.rect.y += 10 * delta * self.direction
-        #if self.rect.y > BOUNDARYSOUTH:
-        #    self.rect.y += -1 * delta * player.getYLocation()
-        
-        #if self.rect.y > BOUNDARYEAST:
-        #    self.rect.x += -1 * delta * player.getXLocation()
         v = -1
         h = -1
 
         if(player.getYLocation() >= self.getYLocation()):
-            v = -50
+            v = -75
         if(player.getYLocation() <= self.getYLocation()):
-            v = 50
+            v = 75
         if(player.getXLocation() >= self.getXLocation()):
-            h = 50
+            h = 75
         if(player.getXLocation() <= self.getXLocation()):
-            h = -50
+            h = -75
         
-        #self.rect.y += v * delta * player.getYLocation()
-        #self.rect.x += h * delta * player.getXLocation()
 
         dx = player.rect.x - self.rect.x
         dy = player.rect.y - self.rect.y
 
         dist = math.hypot(dx, dy)
+
+
+        if (self.rect.x + 50) >= BOUNDARYEAST:
+            self.kill
+        
+        if (self.rect.x - 50) <= BOUNDARYWEST:
+            self.kill
 
         if(dist == 0):
             self.rect.y += 0
@@ -66,16 +64,3 @@ class Enemy(pg.sprite.Sprite):
             self.rect.y += v * delta * dy
             self.rect.x += h * delta * dx
 
-
-        
-
-
-
-        #if(player.getXLocation() > self.getXLocation()):
-        #    self.rect.x += 0.1 * delta * player.getXLocation()
-
-        #if(player.getXLocation() < self.getXLocation()):
-        #    self.rect.x += -0.1 * delta * player.getXLocation()
-
-        #self.rect.y += 1 * delta * player.getYLocation()
-        #self.rect.x += 1 * delta * player.getXLocation()
