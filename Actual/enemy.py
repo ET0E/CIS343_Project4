@@ -1,7 +1,8 @@
 import os
 import pygame as pg
 import random
-from player import Player
+import math
+#from player import Player
 
 BOUNDARYNORTH = 50
 BOUNDARYEAST = 1350
@@ -40,18 +41,33 @@ class Enemy(pg.sprite.Sprite):
         h = -1
 
         if(player.getYLocation() >= self.getYLocation()):
-            v = 0.1
+            v = -50
         if(player.getYLocation() <= self.getYLocation()):
-            v = -0.1
+            v = 50
         if(player.getXLocation() >= self.getXLocation()):
-            h = 0.1
+            h = 50
         if(player.getXLocation() <= self.getXLocation()):
-            h = -0.1
+            h = -50
         
-        
-        self.rect.y += v * delta * player.getYLocation()
-        self.rect.x += h * delta * player.getXLocation()
+        #self.rect.y += v * delta * player.getYLocation()
+        #self.rect.x += h * delta * player.getXLocation()
 
+        dx = player.rect.x - self.rect.x
+        dy = player.rect.y - self.rect.y
+
+        dist = math.hypot(dx, dy)
+
+        if(dist == 0):
+            self.rect.y += 0
+            self.rect.x += 0
+        else:
+            dx = dx/dist
+            dy = dy/dist
+            self.rect.y += v * delta * dy
+            self.rect.x += h * delta * dx
+
+
+        
 
 
 
