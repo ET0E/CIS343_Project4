@@ -26,8 +26,12 @@ def main():
 
     enemyspawnerN = EnemySpawner(700, 50)
     enemyspawnerS = EnemySpawner(700, 750)
+    enemyspawnerW = EnemySpawner(50, 400)
+    enemyspawnerE = EnemySpawner(1350, 400)
     enemyspawners.add(enemyspawnerN)
     enemyspawners.add(enemyspawnerS)
+    enemyspawners.add(enemyspawnerW)
+    enemyspawners.add(enemyspawnerE)
 
     # delete this 
     ##for i in range(400, 1000, 100):
@@ -140,6 +144,8 @@ def main():
         screen.fill((0, 0, 0))
         enemyspawnerN.update(enemies)
         enemyspawnerS.update(enemies)
+        enemyspawnerW.update(enemies)
+        enemyspawnerE.update(enemies)
         player.update(delta)
 
         for enemy in enemies:
