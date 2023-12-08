@@ -26,8 +26,8 @@ def main():
 
     enemyspawnerN = EnemySpawner(700, 50)
     enemyspawnerS = EnemySpawner(700, 750)
-    enemyspawnerW = EnemySpawner(50, 400)
-    enemyspawnerE = EnemySpawner(1350, 400)
+    enemyspawnerW = EnemySpawner(150, 400)
+    enemyspawnerE = EnemySpawner(1325, 400)
     enemyspawners.add(enemyspawnerN)
     enemyspawners.add(enemyspawnerS)
     enemyspawners.add(enemyspawnerW)
@@ -38,8 +38,8 @@ def main():
     #   for j in range(100, 600, 90):
     #        enemy = Enemy((i, j))
     #        enemies.add(enemy)
-
-    # Start sound
+    
+    
     # pg.mixer.music.load('./assets/cpu-talk.mp3')
     # pg.mixer.music.play(-1)
 

@@ -23,8 +23,9 @@ class EnemySpawner(pg.sprite.Sprite):
     # randomly choose a number every update 0-1000 (which is every frame)
 
     def update(self, enemies):
-        if random.randint(0, 50) == 25:
-            enemy = Enemy((self.rect.centerx, self.rect.centery))
+        if random.randint(0, 100) == 25:
+            enemy = Enemy((random.randint((self.rect.centerx - 80), (self.rect.centerx + 80)), 
+                           random.randint((self.rect.centery - 80), (self.rect.centery + 80))))
             enemies.add(enemy)
 
     
