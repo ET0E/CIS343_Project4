@@ -70,7 +70,7 @@ def main():
                 score += 1
             if event.type == pg.USEREVENT + 2:
                 running = False
-            if(score >= 30):
+            if(score >= 50):
                 print("You saved the town! Game Over!")
                 running = False
         # if event.type == pg.KEYDOWN:
