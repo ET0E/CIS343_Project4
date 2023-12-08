@@ -10,7 +10,7 @@ class Player(pg.sprite.Sprite):
     def __init__(self, enemies):
         super(Player, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'Cowboy.png')).convert_alpha()
-        IMAGE_SIZE = (125, 125)
+        IMAGE_SIZE = (100, 100)
         self.image = pg.transform.scale(self.image, IMAGE_SIZE)
         self.rect = self.image.get_rect(center=(self.image.get_rect().x, self.image.get_rect().y))
         self.rect.centerx = 700

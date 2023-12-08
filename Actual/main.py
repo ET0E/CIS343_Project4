@@ -45,11 +45,11 @@ def main():
     # pg.mixer.music.play(-1)
 
     # Get font setup
-    # pg.freetype.init()
-    # font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets/", "PermanentMarker-Regular.ttf")
-    # font_size = 64
-    # font = pg.freetype.Font(font_path, font_size)
-    # WHITE = (254, 254, 254)
+    pg.freetype.init()
+    font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets/", "PixelifySans-Medium.ttf")
+    font_size = 64
+    font = pg.freetype.Font(font_path, font_size)
+    WHITE = (254, 254, 254)
 
     # Startup the main game loop
     running = True
@@ -67,8 +67,11 @@ def main():
             if event.type == pg.QUIT:
                 running = False
             if event.type == pg.USEREVENT + 1:
-                score += 10
+                score += 1
             if event.type == pg.USEREVENT + 2:
+                running = False
+            if(score >= 30):
+                print("You saved the town! Game Over!")
                 running = False
         # if event.type == pg.KEYDOWN:
         # if event.key == pg.K_e:
@@ -150,7 +153,7 @@ def main():
         enemyspawners.draw(screen)
         # would need to update projectlies.draw to shoot from the character with the changes in the comments
         projectiles.draw(screen)
-        # font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
+        font.render_to(screen, (10, 10), "Score: " + str(score), WHITE, None, size=64)
 
         # When drawing is done, flip the buffer.
         pg.display.flip()
