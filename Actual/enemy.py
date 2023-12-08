@@ -19,6 +19,8 @@ class Enemy(pg.sprite.Sprite):
         self.rect.centery = startLocation[1]
         self.startLocation = startLocation
         self.direction = 1
+        self.event = pg.USEREVENT + 2
+
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -63,4 +65,15 @@ class Enemy(pg.sprite.Sprite):
             dy = dy/dist
             self.rect.y += v * delta * dy
             self.rect.x += h * delta * dx
+
+        checks = pg.sprite.GroupSingle()
+        checks.add(player)
+        collision = pg.sprite.spritecollideany(self, checks)
+        if collision:
+            #collision.kill()
+            #self.kill()
+            pg.event.post(pg.event.Event(self.event))
+            print("You've died")
+
+            
 

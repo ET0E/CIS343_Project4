@@ -24,8 +24,7 @@ class EnemySpawner(pg.sprite.Sprite):
 
     def update(self, enemies):
         if random.randint(0, 100) == 25:
-            enemy = Enemy((random.randint((self.rect.centerx - 80), (self.rect.centerx + 80)), 
-                           random.randint((self.rect.centery - 80), (self.rect.centery + 80))))
+            enemy = Enemy((random.randint((self.rect.centerx - 80), (self.rect.centerx + 80)), random.randint((self.rect.centery - 80), (self.rect.centery + 80))))
             enemies.add(enemy)
 
     

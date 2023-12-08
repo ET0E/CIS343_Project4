@@ -18,11 +18,12 @@ def main():
     # Get a screen object
     screen = pg.display.set_mode([1400, 800])
 
-    player = Player()
 
     enemies = pg.sprite.Group()
     projectiles = pg.sprite.Group()
     enemyspawners = pg.sprite.Group()
+
+    player = Player(enemies)
 
     enemyspawnerN = EnemySpawner(700, 50)
     enemyspawnerS = EnemySpawner(700, 750)
@@ -67,6 +68,8 @@ def main():
                 running = False
             if event.type == pg.USEREVENT + 1:
                 score += 10
+            if event.type == pg.USEREVENT + 2:
+                running = False
         # if event.type == pg.KEYDOWN:
         # if event.key == pg.K_e:
         # player.rotate(angle-1)

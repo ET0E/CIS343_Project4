@@ -7,7 +7,7 @@ playerLocation = 0
 
 class Player(pg.sprite.Sprite):
 
-    def __init__(self):
+    def __init__(self, enemies):
         super(Player, self).__init__()
         self.image = pg.image.load(os.path.join('assets', 'Cowboy.png')).convert_alpha()
         IMAGE_SIZE = (125, 125)
@@ -19,6 +19,7 @@ class Player(pg.sprite.Sprite):
         self.rotating = True
         self.direction = 1
         self.score = 0
+        self.enemies = enemies
 
     def get_direction(self):
         return self.direction
@@ -41,8 +42,6 @@ class Player(pg.sprite.Sprite):
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-    def update(self, delta):
-        pass
 
     def getXLocation(self):
         return self.rect.centerx
