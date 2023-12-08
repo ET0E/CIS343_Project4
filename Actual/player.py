@@ -18,6 +18,7 @@ class Player(pg.sprite.Sprite):
         self.angle = 0
         self.rotating = True
         self.direction = 1
+        self.score = 0
 
     def get_direction(self):
         return self.direction
@@ -65,3 +66,5 @@ class Player(pg.sprite.Sprite):
         if self.rect.x < 1920:
             self.rect.x += 240 * delta
 
+    def update_score(self):
+        self.score += 1

@@ -123,17 +123,6 @@ def main():
                 projectile = Projectile(player.rect, enemies, player.get_direction())
                 projectiles.add(projectile)
                 shotDelta = 0
-        if keys[K_e]:
-            if player.rotating:
-                image = pg.transform.rotate(player.get_image(), -90)
-                player.set_image(image)
-                player.rotating = False
-        if keys[K_q]:
-            if player.rotating:
-                image = pg.transform.rotate(player.get_image(), 90)
-                player.set_image(image)
-                player.rotating = False
-
         # if len(enemies) == 0:
         #    print("You've cleared the galaxy of evil!")
         #    return
