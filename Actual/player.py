@@ -18,7 +18,7 @@ class Player(pg.sprite.Sprite):
             center of the hitbox, it is the top left of the image.
             centerx: int that helps to define the center of the image, is the x component of the point
             centery: int that helps to define the center of the image, is the y component of the point
-            rotating: boolean that defines whether the player is rotating or not, aids in the rotating
+            rotating: boolean that defines wahether the player is rotating or not, aids in the rotating
             of the player image
             direction: int that defines which direction the player object is moving
             score: int that keeps a score of the player and how many enemies the player has eliminated
@@ -104,7 +104,7 @@ class Player(pg.sprite.Sprite):
         gets the y location of the player
         :return: the center of the player rectangle (y)
         """
-        return self.rect.center
+        return self.rect.centery
 
     def up(self, delta):
         """
