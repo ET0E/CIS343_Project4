@@ -33,13 +33,13 @@ class Enemy(pg.sprite.Sprite):
         v = -1
         h = -1
 
-        if(player.getYLocation() >= self.getYLocation()):
+        if player.getYLocation() >= self.getYLocation():
             v = -75
-        if(player.getYLocation() <= self.getYLocation()):
+        if player.getYLocation() <= self.getYLocation():
             v = 75
-        if(player.getXLocation() >= self.getXLocation()):
+        if player.getXLocation() >= self.getXLocation():
             h = 75
-        if(player.getXLocation() <= self.getXLocation()):
+        if player.getXLocation() <= self.getXLocation():
             h = -75
         
 
@@ -50,12 +50,12 @@ class Enemy(pg.sprite.Sprite):
 
 
         if (self.rect.x + 50) >= BOUNDARYEAST:
-            self.kill
+            self.kill()
         
         if (self.rect.x - 50) <= BOUNDARYWEST:
-            self.kill
+            self.kill()
 
-        if(dist == 0):
+        if dist == 0:
             self.rect.y += 0
             self.rect.x += 0
         else:

@@ -21,11 +21,11 @@ class EnemySpawner(pg.sprite.Sprite):
     # add delta (1000 == 1 second)
     # randomly choose one of the spawner objects in here
     # randomly choose a number every update 0-1000 (which is every frame)
+
     def update(self, enemies):
-        if (random.randint(0,200) == 25):
+        if random.randint(0, 50) == 25:
             enemy = Enemy((self.rect.centerx, self.rect.centery))
             enemies.add(enemy)
-
 
     
         

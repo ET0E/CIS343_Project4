@@ -85,10 +85,10 @@ def main():
         player.set_image(player.get_image())
         if keys[K_s]:
             player.down(delta)
-            #if player.get_direction() == .5 and player.get_rotating() is True:
-                #image = pg.transform.rotate(player.get_image(), -90)
-                #player.set_image(image)
-                #player.set_rotating(False)
+            # if player.get_direction() == .5 and player.get_rotating() is True:
+            # image = pg.transform.rotate(player.get_image(), -90)
+            # player.set_image(image)
+            # player.set_rotating(False)
             player.set_direction(-.5)
         if keys[K_w]:
             player.up(delta)
@@ -134,7 +134,7 @@ def main():
                 player.set_image(image)
                 player.rotating = False
 
-        #if len(enemies) == 0:
+        # if len(enemies) == 0:
         #    print("You've cleared the galaxy of evil!")
         #    return
         if keys[K_ESCAPE]:
@@ -152,17 +152,6 @@ def main():
             enemy.update(delta, player)
         for projectile in projectiles:
             projectile.update(delta)
-        
-
-        # pos = pg.mouse.get_pos()
-        # x_dist = pos[0] - player.image.get_rect().x
-        # y_dist = -(pos[1] - player.image.get_rect().y)
-        # angle = math.degrees(math.atan2(y_dist, x_dist))
-
-        # image = pg.transform.rotate(player.image, angle - 90)
-        # image_rect = image.get_rect()
-
-        # screen.blit(image, image_rect)
 
         player.draw(screen)
         enemies.draw(screen)
